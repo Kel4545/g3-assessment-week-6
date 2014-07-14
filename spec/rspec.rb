@@ -1,5 +1,5 @@
-require 'rspec'
-require 'assessment'
+
+require "assessment" 
 
 
 describe Hashes do
