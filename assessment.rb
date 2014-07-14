@@ -1,8 +1,6 @@
-#If I was actually calling class methods & running tests, I commented out what I should do
+class Hashes
 
-# class Hashes
-
-# def initialize
+ def initialize
 
 
 @park = [
@@ -48,23 +46,23 @@
 
 
 
-# def new_park_hash
+def new_park_hash
     new_hash = {}
       new_hash[@park[0][:id]] = @park
     puts new_hash       #(no puts if running tests)
-# end
+end
 
 
 
-# def country_hash
+def country_hash
     parks_hash = {}
       @parks.each do |park|
         parks_hash[park[:country]] ||= []
         parks_hash[park[:country]] << park
     puts parks_hash     #(no puts if running tests)
-# end
+end
 
 end
-# end
-# end
+ end
+end
 
