@@ -1,56 +1,105 @@
 
-require "assessment" 
+require "assessment"
 
+describe "#new_park_hash" do
+  it "indexs" do
+    park_hash = [
+      {
+        :id => 546,
+        :name => "Kalahari Resorts",
+        :city => "Wisconsin Dells",
+        :state => "Wisconsin",
+        :country => "United States"
+      },
+      {
+        :id => 547,
+        :name => "Little Amerricka",
+        :city => "Marshall",
+        :state => "Wisconsin",
+        :country => "United States"
+      }
+    ]
 
-describe Hashes do
+    parks = Hashes.new(park_hash)
 
-  describe "#new_park_hash" do
-    it returns "new hash"
-    expect(new_hash).to eq ({
-                             546 => {
-                             :id=>546,
-                            :name=>"Kalahari Resorts",
-                            :city=>"Wisconsin Dells",
-                            :state=>"Wisconsin",
-                            :country=>"United States"
-                            },
-                            547 => {
-                            :id=>547,
-                            :name=>"Little Amerricka",
-                            :city=>"Marshall",
-                            :state=>"Wisconsin",
-                            :country=>"United States"
-                            }
-                            })
+    expected = {
+      546 => {
+        :id => 546,
+        :name => "Kalahari Resorts",
+        :city => "Wisconsin Dells",
+        :state => "Wisconsin",
+        :country => "United States"
+      },
+      547 => {
+        :id => 547,
+        :name => "Little Amerricka",
+        :city => "Marshall",
+        :state => "Wisconsin",
+        :country => "United States"
+      }
+    }
+
+    actual = parks.new_park_hash
+    expect(actual).to eq(expected)
   end
-end
 
+  describe "#country_hash" do
+    it "indexes by country"
+    park_hash = [
+      {
+        :id=>546,
+        :name=>"Kalahari Resorts",
+        :city=>"Wisconsin Dells",
+        :state=>"Wisconsin",
+        :country=>"United States"
+      },
+      {
+        :id=>547,
+        :name=>"Little Amerricka",
+        :city=>"Marshall",
+        :state=>"Wisconsin",
+        :country=>"United States"
+      },
+      {
+        :id=>2,
+        :name=>"Calaway Park",
+        :city=>"Calgary",
+        :state=>"Alberta",
+        :country=>"Canada"
+      }
+    ]
+    parks = Hashes.new(park_hash)
 
-describe "#country_hash" do
-  it "returns a new hash"
+    expected = {
+      "Canada" => [
+        {
+          :id=>2,
+          :name=>"Calaway Park",
+          :city=>"Calgary",
+          :state=>"Alberta",
+          :country=>"Canada"
+        }
+      ],
+      "United States" => [
+        {
+          :id=>546,
+          :name=>"Kalahari Resorts",
+          :city=>"Wisconsin Dells",
+          :state=>"Wisconsin",
+          :country=>"United States"
+        },
+        {
+          :id=>547,
+          :name=>"Little Amerricka",
+          :city=>"Marshall",
+          :state=>"Wisconsin",
+          :country=>"United States"
+        }
+      ]
+    }
 
-  expect(parks_hash).to eq([
-                             {
-                               :id=>546,
-                               :name=>"Kalahari Resorts",
-                               :city=>"Wisconsin Dells",
-                               :state=>"Wisconsin",
-                               :country=>"United States"
-                             },
-                             {
-                               :id=>547,
-                               :name=>"Little Amerricka",
-                               :city=>"Marshall",
-                               :state=>"Wisconsin",
-                               :country=>"United States"
-                             },
-                             {
-                               :id=>2,
-                               :name=>"Calaway Park",
-                               :city=>"Calgary",
-                               :state=>"Alberta",
-                               :country=>"Canada"
-                             }
-                           ])
+    actual = parks.country_hash
+    expect(actual).to eq(expected)
+  end
 
 end
