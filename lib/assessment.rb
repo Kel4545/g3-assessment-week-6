@@ -19,6 +19,7 @@ def country_hash
         parks_hash[park[:country]] << park
 end
 
+  #Better way to solve @parks.group_by {|park park[:country]}
 end
  end
 end
