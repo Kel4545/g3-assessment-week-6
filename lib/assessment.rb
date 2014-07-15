@@ -6,9 +6,11 @@ class Hashes
 
 
 def new_park_hash
-    new_hash = {}
-      new_hash[@park[0][:id]] = @park
+  new_hash = {}
+    @park.each { |hash|
+      new_hash[hash[:id]] = @park}
 end
+
 
 
 
